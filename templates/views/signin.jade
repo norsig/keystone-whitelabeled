@@ -1,31 +1,31 @@
 extends ../layout/auth
 
 block content
-	h1.sr-only Sign In
-	.auth-box
-		.auth-box-col
+	.wrapper
 			include ../includes/auth-brand
 			
-		.auth-box-col
 			if user
-				p.lead Hi #{user.name.first},
-				p.lead You're already signed in.
-				.toolbar
-					if user.isAdmin
-						a(href='/admin').btn.btn-primary Open Admin
-					a(href='/logout').btn.btn-cancel Sign out
+				.note
+					p
+						| Hi #{user.name.first},
+						br
+						| you're already signed in.
+					.toolbar
+						if user.isAdmin
+							a(href='/admin').btn Admin
+						a(href='/logout').btn Logout
 			
 			else
-				form(method="post", novalidate).auth-form
+				form(method="post", novalidate).login-form
 					input(type='hidden', name=csrf_token_key, value=csrf_token_value)
 					.form-group
-						label(for='email') Email
-						input(type='email', name='email', id='email', value=submitted.email).form-control
+						//- label(for='email') Email
+						input(type='email', name='email', id='email', value=submitted.email, placeholder='email').form-control
 					.form-group
-						label(for='password') Password
-						input(type='password', name='password', id='password').form-control
+						//- label(for='password') Password
+						input(type='password', name='password', id='password', placeholder='password').form-control
 					
-					button(type='submit').btn.btn-primary Sign In
+					button(type='submit').btn Login
 				
 				//- TODO generic forgotten password functionality
 				//- a(href=js).btn.btn-link Forgot Password?

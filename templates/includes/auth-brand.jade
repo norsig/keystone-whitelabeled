@@ -1,7 +1,6 @@
-.logo
-	if Array.isArray(logo)
-		a(href='/').auth-box-logo: img(src=logo[0], width=logo[1], height=logo[2], alt=brand)
-	else if logo
-		a(href='/').auth-box-logo: img(src=logo, alt=brand)
-	else
-		a(href='/').auth-box-logo: img(src='/assets/img/logo.end.svg', width=140, height=140, alt=brand)
+if Array.isArray(logo)
+	a(href='/').logo: img(src=logo[0], width=logo[1], height=logo[2], alt=brand)
+else if logo
+	a(href='/').logo: img(src=logo, alt=brand)
+else
+	a(href='/').logo: img(src='/assets/img/logo.svg', width=140, height=140, alt=brand)

@@ -3,19 +3,24 @@ include ../mixins/flashMessages
 doctype html
 html
 	head
-		meta(charset="utf-8")
-		meta(name="viewport", content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width")
-		title Sign into #{brand ? brand : 'Keystone'}
-		link(rel="stylesheet", href="/admin/styles/auth.min.css")
-		link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")
-		block css
-			
-	body: .auth-wrapper
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+		link(rel='shortcut icon', href='/favicon.ico', type='image/x-icon')
 		
+		title Login - Nick DiMatteo | Design + Development
+		
+		meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+		link(rel="stylesheet", href="/admin/styles/auth.min.css")
+		
+		script(src='//use.typekit.net/ldf0tzf.js')
+		script.
+			try{Typekit.load();}catch(e){}
+			
+	body
 		+flash-messages(messages)
 		if !messages
 			.alert.alert-placeholder &nbsp;
-		.auth-body(class=messages && messages.error.length ? 'has-errors' : null)
+		.login(class=messages && messages.error.length ? 'has-errors' : null)
 			block content
 		
 		block footer
